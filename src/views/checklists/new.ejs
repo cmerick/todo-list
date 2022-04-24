@@ -1,12 +1,14 @@
-<%- include('../layouts/header', {title: 'Checklist.name'}) %>
-<%- include('../layouts/menu') %>
+<%- include('../layouts/header', {title: 'Lista de tarefas' }) %>
 
-<section class="section">
-    <div class="container">
-      <h1 class="title size-4">Nova Lista</h1>
+  <%- include('../layouts/menu') %>
 
-   <%- include('form', {method: 'post', url: '/checklists', checklist: checklist}) %> 
-    </div>
-  </section>
+    <section class="section">
+      <div class="container">
+        <h1 class="title size-4">Nova Lista</h1>
 
-  <%- include('../layouts/footer') %>
+        <%- include('form', {method: 'post' , url: '/checklist' , checklist: checklist}) %>
+
+      </div>
+    </section>
+
+    <%- include('../layouts/footer') %>

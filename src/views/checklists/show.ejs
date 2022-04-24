@@ -1,20 +1,20 @@
-<%- include('../layouts/header', {title: 'Checklist.name'}) %>
+<%- include('../layouts/header', {title: 'checklist.name'}) %>
 <%- include('../layouts/menu') %>
 <section class="section">
     <div class="container">
       <div class="columns">
         <div class="column is-four-fifths">
-          <h1 class="title size-4"><%= Checklist.name %></h1>
+          <h1 class="title size-4"><%= checklist.name %></h1>
         </div>
         <div class="column is-one-fifth">
           <a href="add-task.html" class="button is-success is-small">Nova Tarefa</a>
-          <a href="/checklists" class="button is-small">Voltar</a>
+          <a href="/checklist" class="button is-small">Voltar</a>
         </div>
       </div>
 
       <hr />
 
-      <% Checklist.tasks.forEach(task => { %>
+      <% checklist.tasks.forEach(task => { %>
       <div class="columns">
         <div class="column is-four-fifths">
           <input type="checkbox" /> <% task.name %> >
