@@ -1,1 +1,6 @@
-<%= Checklist.task.count %>
+
+
+
+onchange="setTagAsDone(this, '<%= task._id %>')" <%= task.done ? 'checked' : '' %>
+
+<%= task.done ? 'has-text-success is-italic' : '' %>

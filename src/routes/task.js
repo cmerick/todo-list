@@ -22,7 +22,7 @@ simpleRouter.delete('/:id', async (req, res) => {
         let taskToRemove = checklist.tasks.indexOf(task._id);
         checklist.tasks.splice(taskToRemove, 1);
         checklist.save();
-        res.redirect(`/checklists/${checklist._id}`)
+        res.redirect(`/checklists/${checklist._id}`);
     } catch (error) {
         res.status(422).render('pages/error', { errors: 'Error ao remover a tarefa' });
     }
@@ -30,7 +30,7 @@ simpleRouter.delete('/:id', async (req, res) => {
 
 checklistDependentRoute.post('/:id/tasks', async (req, res) => {
     let { name } = req.body.task;
-    let task = new Task({ name, checklist: req.params.id});
+    let task = new Task({ name, checklist: req.params.id });
     try {
         await task.save();
         let checklist = await Checklist.findById(req.params.id);
@@ -39,7 +39,19 @@ checklistDependentRoute.post('/:id/tasks', async (req, res) => {
         res.redirect(`/checklists/${req.params.id}`);
     } catch (error) {
         let errors = error.errors;
-        res.status(422).render('tasks/new', { task:{...task, errors}, checklistId: req.params.id });
+        res.status(422).render('tasks/new', { task: { ...task, errors }, checklistId: req.params.id });
+    }
+})
+
+simpleRouter.put('/:id', async (req, res) => {
+    let task = await Task.findById(req.params.id);
+    try {
+        task.set(req.body.task);
+        await task.save();
+        res.status(200).json({ task });
+    } catch (error) {
+        let errors = error.errors;
+        res.status(422).json({ task: { ...errors } });
     }
 })
 
