@@ -8,7 +8,7 @@
                         <h1 class="title size-4">Listas de Tarefas</h1>
                     </div>
                     <div class="column is-one-fifth">
-                        <a href="/checklist/new" class="button is-success is-small">Nova Lista</a>
+                        <a href="/checklists/new" class="button is-success is-small">Nova Lista</a>
                     </div>
                 </div>
                 <div class="columns is-multiline">
@@ -20,23 +20,23 @@
                                         <%= Checklist.name %>
                                     </p>
                                     <p class="subtitle is-size-6">
-                                        tarefas
+                                        <%= Checklist.tasks.length %> tarefas
                                     </p>
                                 </div>
                                 <footer class="card-footer">
                                     <p class="card-footer-item">
                                         <span>
-                                            <a href="/checklist/<%= Checklist._id %>">Ver</a>
+                                            <a href="/checklists/<%= Checklist._id %>">Ver</a>
                                         </span>
                                     </p>
                                     <p class="card-footer-item">
                                         <span>
-                                            <a href="checklist-form.html">Editar</a>
+                                            <a href="/checklists/<%= Checklist._id %>/edit">Editar</a>
                                         </span>
                                     </p>
                                     <p class="card-footer-item">
                                         <span>
-                                            <a href="#" class="has-text-danger">Remover</a>
+                                            <a href="/checklists/<%= Checklist._id %>?_method=delete" class="has-text-danger">Remover</a>
                                         </span>
                                     </p>
                                 </footer>
